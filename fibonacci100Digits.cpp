@@ -1,6 +1,6 @@
 /* The goal of this is to write a function that will implement each Fibonacci number with the help of an
  * int array of size 100 ( the elements will be used to store the digits in this array )
- * When the function is called to find Fn, it will calculate all Fibonacci from F(2) to F(N) using fibonacci formula
+ * When the function is calld to find Fn, it will calculate all Fibonacci from F(2) to F(N) using fibonacci formula
  * write a program that will calculate Fibonacci numbers containing up to 100 digits
  *
  * Display the largest Fibonacci number that has less than 100 digits. Make sure that your program will display
@@ -8,6 +8,7 @@
  */
 
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 int main(){
@@ -37,10 +38,7 @@ for( int i = 2 ; digits <= 100 ; i++ ){
 		 * Fn1 = FN
 		 * It will break into three parts in order to make the adding digit by digit
 		 */
-
-
-		/*
-		 * if(digits <= 100){
+		/*if(digits <= 100){
 			//this is if the conditions needs to stop it which should wind the sequence back 1 since
 			//it didn't do anything for this run through
 			N = i - 1;
@@ -71,7 +69,7 @@ for( int i = 2 ; digits <= 100 ; i++ ){
 			//cout << " = " << FN[index - d] << endl;
 			//cout << "\nDigits: " << digits;
 
-			if( ( Fn1[ index - d ] + Fn2[ index - d ] ) > 9 ){
+			if( (FN[index-d]) > 9 ){
 
 				//moving up digit counter and adding next digit 1 when the index needs to expand.
 				if( d + 1 == digits ){
@@ -79,10 +77,10 @@ for( int i = 2 ; digits <= 100 ; i++ ){
 				}
 
 				//assigning value to temp so it will carry over
-				temp = FN[ index - d ] / 10;
+				temp = floor( FN[index - d] / 10 );
 
 				//This will get rid of any extra digits for FN
-				FN[ index - d ] = FN[ index - d ] % 10;
+				FN[index - d] = FN[index - d] % 10;
 
 				/*
 				//debugging output
@@ -94,17 +92,17 @@ for( int i = 2 ; digits <= 100 ; i++ ){
 		}//end of the adding for loop
 
 		//start of the transfer loop
-		for( int d = 0; d < digits; d++ ){
+		for(int d = 0; d < digits; d++){
 			//transferring the numbers of Fn1 to Fn2
-			Fn2[ index - d ] = Fn1[ index - d ];
+			Fn2[index - d] = Fn1[index - d];
 		}//end of thetransfer loop for Fn1 to Fn2
 
-		for( int d = 0; d < digits; d++ ){
+		for(int d = 0; d < digits; d++){
 			//transferring the numbers of FN to Fn1
-			Fn1[ index - d ] = FN[ index - d ];
+			Fn1[index - d] = FN[index - d];
 		}//end of the transfer loop for FN to Fn1
 
-		if( digits == 99 && ( Fn1[ SIZE - digits ] + Fn2[ SIZE - digits ] ) > 9 ){
+		if(digits == 99 && (Fn1[SIZE - digits] + Fn2[SIZE - digits]) > 9){
 				//this is if the conditions needs to stop it which should wind the sequence back 1 since
 				//it didn't do anything for this run through
 				N = i;
@@ -126,7 +124,7 @@ for( int i = 2 ; digits <= 100 ; i++ ){
 
 cout << "\nThe number for the fibonacci sequence of " << N << " is: ";
 index = SIZE - digits;
-for( int p = index; p < SIZE; p++ ){
+for(int p = index; p < SIZE; p++){
 	cout << FN[p];
 }
 //debugging output
